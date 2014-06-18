@@ -9,6 +9,7 @@
   <%= @television_show.synopsis %>
 </div>
 
+
 <%= form_for [@television_show, @character] do |f| %>
   <div>
     <%= f.label :character_name %>
@@ -24,3 +25,13 @@
   </div>
   <%= f.submit 'Submit'%>
 <%end%>
+
+<% if @character.errors.any? %>
+  <ul>
+    <% @character.errors.full_messages.each do |msg| %>
+    <li>
+      <%= msg %>
+    </li>
+  <%end%>
+  </ul>
+<% end %>

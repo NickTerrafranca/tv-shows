@@ -9,8 +9,8 @@ class CharactersController < ApplicationController
       flash[:notice] = "Success."
       redirect_to @television_show
     else
-      flash[:notice] = "Something whent wrong, you posting could not be saved."
-      redirect_to @television_show
+      flash[:notice] = "Something whent wrong, your posting could not be saved."
+      render :template => "television_shows/show"
     end
   end
 
