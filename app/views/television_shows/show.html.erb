@@ -9,7 +9,21 @@
   <%= @television_show.synopsis %>
 </div>
 
+<% @television_show.characters.each do |char|%>
 
+  <div>
+   <%= char.character_name%>
+  </div>
+
+  <div>
+   <%= char.actor_name %>
+  </div>
+  <div>
+     <%= char.description %>
+  </div>
+<%end%>
+
+</div>
 <%= form_for [@television_show, @character] do |f| %>
   <div>
     <%= f.label :character_name %>

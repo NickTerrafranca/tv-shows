@@ -17,7 +17,7 @@ scenario "user can see a list of all the characters" do
         title: "#{i}i Game of Thrones",
         network: "#{i}HBO",
         years: "#{i}2011",
-        synopsis: 'Seven noble families fight for control of the mythical land of Westeros.'
+        synopsis: "#{i} Seven noble families fight for control of the mythical land of Westeros."
     }
 
     character_attrs = {
