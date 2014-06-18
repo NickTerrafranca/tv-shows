@@ -1,0 +1,35 @@
+require 'rails_helper'
+
+feature "Views list of characters", %Q{
+  As a site visitor
+  I want to view a list of people's favorite TV characters
+  So I can find wonky characters to watch
+} do
+
+# Acceptance Criteria:
+# * I can see a list of all the characters"
+# * The character's name and the TV show it is associated with are listed
+
+scenario "user can see a list of all the characters" do
+
+  television_show_attrs = {
+      title: 'Game of Thrones',
+      network: 'HBO',
+      years: '2011',
+      synopsis: 'Seven noble families fight for control of the mythical land of Westeros.'
+  }
+
+  character_attrs = {
+      character_name: 'Yoda',
+      actor_name: 'Frank Oz',
+      description: 'He is the master!'
+  }
+
+  tv_show = TelevisionShow.create(television_show_attrs)
+  character = tv_show.characters.create(character_attrs)
+
+  visit "/characters"
+  expect(page).to have_content character.character_name
+  expect(page).to have_content tv_show.title
+  end
+end
