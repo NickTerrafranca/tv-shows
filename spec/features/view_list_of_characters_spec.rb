@@ -11,25 +11,29 @@ feature "Views list of characters", %Q{
 # * The character's name and the TV show it is associated with are listed
 
 scenario "user can see a list of all the characters" do
+  i = 1
+  3.times do
+    television_show_attrs = {
+        title: "#{i}i Game of Thrones",
+        network: "#{i}HBO",
+        years: "#{i}2011",
+        synopsis: 'Seven noble families fight for control of the mythical land of Westeros.'
+    }
 
-  television_show_attrs = {
-      title: 'Game of Thrones',
-      network: 'HBO',
-      years: '2011',
-      synopsis: 'Seven noble families fight for control of the mythical land of Westeros.'
-  }
+    character_attrs = {
+        character_name: "#{i}Yoda",
+        actor_name: "#{i}Frank Oz",
+        description: "#{i}He is the master!"
+    }
 
-  character_attrs = {
-      character_name: 'Yoda',
-      actor_name: 'Frank Oz',
-      description: 'He is the master!'
-  }
 
-  tv_show = TelevisionShow.create(television_show_attrs)
-  character = tv_show.characters.create(character_attrs)
+    tv_show = TelevisionShow.create(television_show_attrs)
+    character = tv_show.characters.create(character_attrs)
 
-  visit "/characters"
-  expect(page).to have_content character.character_name
-  expect(page).to have_content tv_show.title
+    visit "/characters"
+    expect(page).to have_content character.character_name
+    expect(page).to have_content tv_show.title
+    i += 1
+    end
   end
 end
