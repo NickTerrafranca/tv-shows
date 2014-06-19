@@ -18,12 +18,13 @@
   <div>
    <%= char.actor_name %>
   </div>
+
   <div>
      <%= char.description %>
   </div>
+
 <%end%>
 
-</div>
 <%= form_for [@television_show, @character] do |f| %>
   <div>
     <%= f.label :character_name %>

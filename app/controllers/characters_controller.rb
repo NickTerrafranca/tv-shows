@@ -18,6 +18,19 @@ class CharactersController < ApplicationController
     end
   end
 
+   def destroy
+    # binding.pry
+    @character = Character.find(params[:id])
+    @character.destroy
+    if @character.destroy
+      flash[:notice] = 'Your entry was deleted'
+      redirect_to '/characters'
+    else
+      flash.now[:notice] = "Your entry couldn't be deleted."
+      render "/characters"
+    end
+  end
+
   def character_params
     params.require(:character).permit(:actor_name, :character_name, :description)
   end

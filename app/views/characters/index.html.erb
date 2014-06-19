@@ -3,8 +3,11 @@
   <li>
     <%= char.character_name%>
     <%= char.television_show.title%>
+    <%= link_to "Delete Character", character_path(char), method: :delete %>
+    <%= notice %>
   <%end%>
 
 </li>
 
 </ul>
+
